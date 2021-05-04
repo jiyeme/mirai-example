@@ -1,9 +1,10 @@
-package net.mamoe.example;
+package net.mamoe.exampleJava;
 
-import net.mamoe.example.eventHandle.GroupEventJava;
+import net.mamoe.exampleJava.eventHandle.CommonEvent;
+import net.mamoe.exampleJava.eventHandle.FriendEvent;
+import net.mamoe.exampleJava.eventHandle.GroupEvent;
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.BotFactory;
-import net.mamoe.mirai.event.events.GroupMessageEvent;
 import net.mamoe.mirai.utils.BotConfiguration;
 
 /**
@@ -54,12 +55,9 @@ public class AppMainJava
     }
 
     private static void afterLogin(Bot bot){
-        groupEvent(bot);
+        GroupEvent.main(bot);
+        FriendEvent.main(bot);
+        CommonEvent.main(bot);
     }
 
-    private static void groupEvent(Bot bot){
-        bot.getEventChannel().subscribeAlways(GroupMessageEvent.class, event-> {
-            GroupEventJava.at(bot, event);
-        });
-    }
 }

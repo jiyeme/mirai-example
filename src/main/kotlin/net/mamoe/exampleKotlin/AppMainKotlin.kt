@@ -1,13 +1,12 @@
-package net.mamoe.example
+package net.mamoe.exampleKotlin
 
 import kotlinx.coroutines.runBlocking
-import net.mamoe.example.eventHandle.GroupEventKotlin
+import net.mamoe.exampleKotlin.eventHandle.CommonEvent
+import net.mamoe.exampleKotlin.eventHandle.FriendEvent
+import net.mamoe.exampleKotlin.eventHandle.GroupEvent
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.BotFactory
-import net.mamoe.mirai.event.events.GroupMessageEvent
 import net.mamoe.mirai.event.subscribeGroupMessages
-import net.mamoe.mirai.message.data.*
-import java.util.function.Predicate
 
 /**
  * @Author jiyec
@@ -49,17 +48,12 @@ object AppMainKotlin {
     private fun afterLogin(bot: Bot): Unit {
         bot.eventChannel.subscribeGroupMessages {
             case("test"){
-                subject.sendMessage("群员发送了一个测试你消息")
+                subject.sendMessage("群员发送了一个测试消息")
             }
         }
-        groupEvent(bot)
+        GroupEvent.main(bot)
+        FriendEvent.main(bot)
+        CommonEvent.main(bot)
     }
 
-    /**
-     * QQ群事件
-     */
-    @JvmStatic
-    private fun groupEvent(bot: Bot): Unit{
-        GroupEventKotlin.at(bot)
-    }
 }

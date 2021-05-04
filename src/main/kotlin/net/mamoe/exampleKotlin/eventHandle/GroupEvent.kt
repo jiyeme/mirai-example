@@ -1,4 +1,4 @@
-package net.mamoe.example.eventHandle
+package net.mamoe.exampleKotlin.eventHandle
 
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.event.events.GroupMessageEvent
@@ -7,6 +7,7 @@ import net.mamoe.mirai.message.data.At
 import net.mamoe.mirai.message.data.PlainText
 import net.mamoe.mirai.message.data.SingleMessage
 import net.mamoe.mirai.message.data.messageChainOf
+import java.util.function.Consumer
 import java.util.function.Predicate
 
 /**
@@ -15,7 +16,25 @@ import java.util.function.Predicate
  * @Date  2021/5/4 12:33
  * @Version 1.0
  **/
-object GroupEventKotlin {
+object GroupEvent {
+    @JvmStatic
+    fun main(bot: Bot){
+        plainText(bot)
+        at(bot)
+    }
+
+    /**
+     * 纯文本
+     *
+     * @param bot
+     */
+    fun plainText(bot: Bot) {
+        bot.eventChannel.subscribeGroupMessages{
+            case("纯文本"){
+                subject.sendMessage("纯文本消息-Kotlin")
+            }
+        }
+    }
 
     /**
      * 机器人被AT事件
@@ -40,4 +59,9 @@ object GroupEventKotlin {
             }
         }
     }
+
+    /**
+     *
+     *
+     */
 }

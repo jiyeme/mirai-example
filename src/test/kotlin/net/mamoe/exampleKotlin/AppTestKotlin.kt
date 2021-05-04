@@ -1,6 +1,5 @@
-package net.mamoe.example
+package net.mamoe.exampleKotlin
 
-import org.junit.Test
 
 /**
  * @Author jiyec
@@ -9,7 +8,6 @@ import org.junit.Test
  **/
 class AppTestKotlin {
 
-    @Test
     fun testEnv(): Unit {
         print(System.getenv("QQID"));
         print(System.getenv("QQPASS"));
