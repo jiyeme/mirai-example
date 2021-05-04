@@ -4,6 +4,7 @@ import kotlinx.coroutines.runBlocking
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.BotFactory
 import net.mamoe.mirai.event.events.GroupMessageEvent
+import net.mamoe.mirai.event.subscribeGroupMessages
 import net.mamoe.mirai.message.data.*
 import java.util.function.Predicate
 
@@ -45,6 +46,11 @@ object AppMainKotlin {
 
     @JvmStatic
     private fun afterLogin(bot: Bot): Unit {
+        bot.eventChannel.subscribeGroupMessages {
+            case("test"){
+                subject.sendMessage("群员发送了一个测试你消息")
+            }
+        }
         groupEvent(bot)
     }
 
@@ -60,6 +66,13 @@ object AppMainKotlin {
                     .anyMatch(Predicate { it: SingleMessage? -> it is At && (it as At).target == bot.id })
             ) {
                 val at_resp = messageChainOf(PlainText("其一--"), At(sender.id), PlainText("AT 我干嘛啊"))
+                subject.sendMessage(at_resp)
+            }
+        }
+
+        bot.eventChannel.subscribeGroupMessages {
+            this.atBot(){
+                val at_resp = messageChainOf(PlainText("其二--"), At(sender.id), PlainText("AT 我干嘛啊"))
                 subject.sendMessage(at_resp)
             }
         }
