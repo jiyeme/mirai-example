@@ -14,41 +14,15 @@ import net.mamoe.mirai.message.data.*;
 public class GroupEvent {
 
     public static void main(Bot bot){
-        plainText(bot);
-        rawFace(bot);
         at(bot);
     }
 
     /**
-     * 纯文本
-     *
-     * @param bot
-     */
-    public static void plainText(Bot bot){
-        bot.getEventChannel().subscribeAlways(GroupMessageEvent.class, event->{
-            String msg = event.getMessage().toString();
-            if(msg.contains("纯文本")){
-                event.getSubject().sendMessage(new PlainText("这是一条纯文本消息"));
-            }
-        });
-    }
-
-    /**
-     * 原生表情
-     *
-     */
-    public static void rawFace(Bot bot){
-
-        bot.getEventChannel().subscribeAlways(GroupMessageEvent.class, event->{
-            String msg = event.getMessage().toString();
-            if(msg.contains("表情")){
-                event.getSubject().sendMessage(new Face(Face.XIE_YAN_XIAO));
-            }
-        });
-    }
-
-    /**
      * 机器人被AT事件
+     *
+     * 触发条件：机器人被AT
+     *
+     * 触发效果：机器人 @发送者 [两条]
      *
      * 参考：https://github.com/mamoe/mirai/issues/350
      */
@@ -58,7 +32,6 @@ public class GroupEvent {
                 MessageChain at_resp = MessageUtils.newChain(new PlainText("其一--"), new At(event.getSender().getId()), new PlainText("AT 我干嘛啊"));
                 event.getSubject().sendMessage(at_resp);
             }
-            ;
 
             // 似乎不太推荐？
             if (event.getMessage().contains(new At(bot.getId()))) {

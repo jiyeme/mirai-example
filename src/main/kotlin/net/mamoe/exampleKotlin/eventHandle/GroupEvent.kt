@@ -19,25 +19,15 @@ import java.util.function.Predicate
 object GroupEvent {
     @JvmStatic
     fun main(bot: Bot){
-        plainText(bot)
         at(bot)
     }
 
     /**
-     * 纯文本
-     *
-     * @param bot
-     */
-    fun plainText(bot: Bot) {
-        bot.eventChannel.subscribeGroupMessages{
-            case("纯文本"){
-                subject.sendMessage("纯文本消息-Kotlin")
-            }
-        }
-    }
-
-    /**
      * 机器人被AT事件
+     *
+     * 触发条件：机器人被AT
+     *
+     * 触发效果：机器人 @发送者 [两条]
      *
      * 参考：https://github.com/mamoe/mirai/issues/350
      */
@@ -60,8 +50,4 @@ object GroupEvent {
         }
     }
 
-    /**
-     *
-     *
-     */
 }
