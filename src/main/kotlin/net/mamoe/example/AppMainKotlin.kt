@@ -1,6 +1,7 @@
 package net.mamoe.example
 
 import kotlinx.coroutines.runBlocking
+import net.mamoe.example.eventHandle.GroupEventKotlin
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.BotFactory
 import net.mamoe.mirai.event.events.GroupMessageEvent
@@ -54,27 +55,11 @@ object AppMainKotlin {
         groupEvent(bot)
     }
 
+    /**
+     * QQ群事件
+     */
     @JvmStatic
     private fun groupEvent(bot: Bot): Unit{
-        bot.eventChannel.subscribeAlways<GroupMessageEvent> {
-            /**
-             * 机器人被AT事件
-             *
-             * 参考：https://github.com/mamoe/mirai/issues/350
-             */
-            if (message.stream()
-                    .anyMatch(Predicate { it: SingleMessage? -> it is At && (it as At).target == bot.id })
-            ) {
-                val at_resp = messageChainOf(PlainText("其一--"), At(sender.id), PlainText("AT 我干嘛啊"))
-                subject.sendMessage(at_resp)
-            }
-        }
-
-        bot.eventChannel.subscribeGroupMessages {
-            this.atBot(){
-                val at_resp = messageChainOf(PlainText("其二--"), At(sender.id), PlainText("AT 我干嘛啊"))
-                subject.sendMessage(at_resp)
-            }
-        }
+        GroupEventKotlin.at(bot)
     }
 }
