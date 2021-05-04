@@ -12,7 +12,7 @@ import net.mamoe.mirai.message.data.PlainText;
  * @Date 2021/5/4 8:54
  * @Version 1.0
  **/
-public class GroupEvent {
+public class GroupEventJava {
     public static void at(Bot bot, GroupMessageEvent event){
 
             System.out.println(event);

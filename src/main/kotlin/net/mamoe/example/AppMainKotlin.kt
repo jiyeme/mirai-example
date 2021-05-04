@@ -1,16 +1,20 @@
 package net.mamoe.example
 
+import kotlinx.coroutines.runBlocking
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.BotFactory
 import net.mamoe.mirai.event.events.GroupMessageEvent
+import net.mamoe.mirai.message.data.*
+import java.util.function.Predicate
 
 /**
  * @Author jiyec
  * @Date  2021/5/4 9:35
  * @Version 1.0
  **/
-class AppMainKotlin {
-    suspend fun main(): Unit{
+object AppMainKotlin {
+    @JvmStatic
+    fun main(args: Array<String>): Unit = runBlocking {
 
         /**
          * 设置：
@@ -18,6 +22,11 @@ class AppMainKotlin {
          */
         val qqid = System.getenv("QQID");
         val qqpass = System.getenv("QQPASS");
+
+        if (qqid == null || qqpass == null) {
+            println("未配置账号密码")
+            return@runBlocking
+        }
 
         /**
          * 机器人创建登录
@@ -34,15 +43,25 @@ class AppMainKotlin {
         afterLogin(bot)
     }
 
+    @JvmStatic
     private fun afterLogin(bot: Bot): Unit {
-
+        groupEvent(bot)
     }
 
+    @JvmStatic
     private fun groupEvent(bot: Bot): Unit{
         bot.eventChannel.subscribeAlways<GroupMessageEvent> {
-            event->{
-
-        }
+            /**
+             * 机器人被AT事件
+             *
+             * 参考：https://github.com/mamoe/mirai/issues/350
+             */
+            if (message.stream()
+                    .anyMatch(Predicate { it: SingleMessage? -> it is At && (it as At).target == bot.id })
+            ) {
+                val at_resp = messageChainOf(PlainText("其一--"), At(sender.id), PlainText("AT 我干嘛啊"))
+                subject.sendMessage(at_resp)
+            }
         }
     }
 }

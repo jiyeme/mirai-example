@@ -1,6 +1,6 @@
 package net.mamoe.example;
 
-import net.mamoe.example.eventHandle.GroupEvent;
+import net.mamoe.example.eventHandle.GroupEventJava;
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.BotFactory;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
@@ -59,7 +59,7 @@ public class AppMainJava
 
     private static void groupEvent(Bot bot){
         bot.getEventChannel().subscribeAlways(GroupMessageEvent.class, event-> {
-            GroupEvent.at(bot, event);
+            GroupEventJava.at(bot, event);
         });
     }
 }
