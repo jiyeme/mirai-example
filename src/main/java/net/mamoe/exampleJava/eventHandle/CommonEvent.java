@@ -1,13 +1,13 @@
 package net.mamoe.exampleJava.eventHandle;
 
 import net.mamoe.mirai.Bot;
-import net.mamoe.mirai.event.events.GroupMessageEvent;
+import net.mamoe.mirai.contact.Contact;
 import net.mamoe.mirai.event.events.MessageEvent;
 import net.mamoe.mirai.event.events.NudgeEvent;
-import net.mamoe.mirai.message.action.Nudge;
-import net.mamoe.mirai.message.data.Face;
-import net.mamoe.mirai.message.data.MessageChainBuilder;
-import net.mamoe.mirai.message.data.PlainText;
+import net.mamoe.mirai.message.data.*;
+
+import java.io.*;
+import java.net.URL;
 
 /**
  * 通用事件
@@ -21,6 +21,40 @@ public class CommonEvent {
         plainText(bot);
         nudge(bot);
         rawFace(bot);
+        sendImage(bot);
+    }
+
+    /**
+     * 发送图片
+     *
+     * 触发条件：发送字符串 ---> “图片”
+     *
+     * 触发效果：机器人回复 “这是你要的图片 + [图片]”
+     *
+     * 参考：https://github.com/mamoe/mirai/issues/1045
+     *
+     * @param bot
+     */
+    public static void sendImage(Bot bot){
+        bot.getEventChannel().subscribeAlways(MessageEvent.class, event->{
+            String msg = event.getMessage().toString();
+            if(msg.contains("图片")){
+                try {
+                    URL resource = CommonEvent.class.getResource("/6ae5b66fddc451dacf74cd38bdfd5266d1163210.jpg");
+                    FileInputStream fileInputStream = new FileInputStream(resource.getFile());
+                    Image image = Contact.uploadImage(event.getSubject(), fileInputStream);
+                    MessageChain messages = MessageUtils.newChain(new PlainText("这是你要的图片"), image);
+                    event.getSubject().sendMessage(messages);
+                    fileInputStream.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    event.getSubject().sendMessage("我没有找到要发送的文件╮(╯▽╰)╭");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    event.getSubject().sendMessage("粗了一些奇怪的事情");
+                }
+            }
+        });
     }
 
     /**

@@ -7,6 +7,7 @@ import net.mamoe.mirai.message.action.Nudge;
 import net.mamoe.mirai.message.data.*;
 
 /**
+ * QQ群事件
  * @Author jiyec
  * @Date 2021/5/4 8:54
  * @Version 1.0

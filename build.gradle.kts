@@ -19,7 +19,7 @@ tasks.withType(KotlinJvmCompile::class.java) {
 }
 
 dependencies {
-    val miraiVersion = "2.6.2"
+    val miraiVersion = "2.6.3"
     api("net.mamoe", "mirai-core-api", miraiVersion)     // 编译代码使用
     runtimeOnly("net.mamoe", "mirai-core", miraiVersion) // 运行时使用
 
