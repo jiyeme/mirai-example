@@ -1,8 +1,7 @@
 package net.mamoe.exampleJava;
 
-import net.mamoe.exampleJava.eventHandle.CommonEvent;
-import net.mamoe.exampleJava.eventHandle.FriendEvent;
-import net.mamoe.exampleJava.eventHandle.GroupEvent;
+import net.mamoe.exampleJava.eventHandle.MainHandleJava;
+import net.mamoe.exampleKotlin.eventHandle.MainHandleKotlin;
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.BotFactory;
 import net.mamoe.mirai.utils.BotConfiguration;
@@ -55,9 +54,8 @@ public class AppMainJava
     }
 
     private static void afterLogin(Bot bot){
-        GroupEvent.main(bot);
-        FriendEvent.main(bot);
-        CommonEvent.main(bot);
+        MainHandleJava.main(bot);
+        MainHandleKotlin.main(bot);
     }
 
 }

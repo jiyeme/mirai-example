@@ -1,0 +1,35 @@
+{
+  "app": "com.tencent.miniapp_01",
+  "view": "view_8C8E89B49BE609866298ADDFF2DBABA4",
+  "ver": "1.0.0.19",
+  "prompt": "[QQ小程序]We成信大",
+  "meta": {
+    "detail_1": {
+      "appid": "1111006861",
+      "title": "We成信大",
+      "desc": "We成信大",
+      "icon": "https:\/\/miniapp.gtimg.cn\/public\/appicon\/6dca4792d15ed27ac7dd436051b46209_200.jpg",
+      "preview": "pubminishare-30161.picsz.qpic.cn\/1d851963-66b1-41ca-8431-a5ae1c720197",
+      "url": "m.q.qq.com\/a\/s\/65b5b59f0c2b4fbb35ea2a670909a22e",
+      "scene": 0,
+      "host": {
+        "uin": 1690127128,
+        "nick": "祭夜"
+      },
+      "shareTemplateId": "8C8E89B49BE609866298ADDFF2DBABA4",
+      "shareTemplateData": {},
+      "showLittleTail": "",
+      "gamePoints": "",
+      "gamePointsUrl": ""
+    }
+  },
+  "config": {
+    "type": "normal",
+    "width": 0,
+    "height": 0,
+    "forward": 0,
+    "autoSize": 0,
+    "ctime": 1620218345,
+    "token": "83eee31b31fed7b61b7fd12a7b533b5a"
+  }
+}

@@ -1,9 +1,8 @@
 package net.mamoe.exampleKotlin
 
 import kotlinx.coroutines.runBlocking
-import net.mamoe.exampleKotlin.eventHandle.CommonEvent
-import net.mamoe.exampleKotlin.eventHandle.FriendEvent
-import net.mamoe.exampleKotlin.eventHandle.GroupEvent
+import net.mamoe.exampleJava.eventHandle.MainHandleJava
+import net.mamoe.exampleKotlin.eventHandle.MainHandleKotlin
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.BotFactory
 import net.mamoe.mirai.event.subscribeGroupMessages
@@ -51,9 +50,8 @@ object AppMainKotlin {
                 subject.sendMessage("群员发送了一个测试消息")
             }
         }
-        GroupEvent.main(bot)
-        FriendEvent.main(bot)
-        CommonEvent.main(bot)
+        MainHandleKotlin.main(bot)
+        MainHandleJava.main(bot)
     }
 
 }

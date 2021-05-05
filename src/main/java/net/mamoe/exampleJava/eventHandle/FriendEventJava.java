@@ -13,7 +13,7 @@ import net.mamoe.mirai.message.data.PlainText;
  * @Date 2021/5/4 12:48
  * @Version 1.0
  **/
-public class FriendEvent {
+public class FriendEventJava {
 
     public static void main(Bot bot){
     }

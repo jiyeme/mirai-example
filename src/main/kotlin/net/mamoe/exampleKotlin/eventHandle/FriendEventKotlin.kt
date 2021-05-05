@@ -9,7 +9,7 @@ import net.mamoe.mirai.Bot
  * @Date  2021/5/4 13:49
  * @Version 1.0
  **/
-object FriendEvent {
+object FriendEventKotlin {
     @JvmStatic
     fun main(bot: Bot){
     }
