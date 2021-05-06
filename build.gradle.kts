@@ -19,13 +19,14 @@ tasks.withType(KotlinJvmCompile::class.java) {
 }
 
 dependencies {
-    val miraiVersion = "2.6.3"
+    val miraiVersion = "2.6.4"
     api("net.mamoe", "mirai-core-api", miraiVersion)     // 编译代码使用
     runtimeOnly("net.mamoe", "mirai-core", miraiVersion) // 运行时使用
 
     implementation(kotlin("stdlib"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    implementation ("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.3")
 }
 
 tasks.getByName<Test>("test") {

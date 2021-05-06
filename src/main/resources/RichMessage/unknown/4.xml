@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<msg serviceID="77" templateID="14" action="web" brief="擎天xml论坛" sourceMsgId="0" url="http://qtxml.cn" flag="9"
+     adverSign="0" multiMsgFlag="0">
+    <item layout="1" bg="0">
+        <picture cover="http://api.btstu.cn/sjbz/zsy.php"/>
+        <title size="26" style="1" color="#CD3333">您好，$昵称$ ID：$QQ$</title>
+    </item>
+    <item layout="6">
+        <title size="27" color="#8470FF" style="0">擎天测试多行【换行】擎天测试多行</title>
+        <summary color="#EE9A00" style="1" size="27">
+            擎天测试多行【换行】擎天测试多行【换行】擎天测试多行【换行】擎天测试多行【换行】擎天测试多行【换行】擎天测试多行【换行】擎天测试多行
+        </summary>
+    </item>
+    <source name="擎天论坛" icon="" url="http://qtxml.cn" action="app" i_actionData="" appid=""/>
+</msg>

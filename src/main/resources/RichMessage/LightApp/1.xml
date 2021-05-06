@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<msg templateID="123" url="http://m.q.qq.com/a/s/16f055a6ae96ccac6c3ca0606bf1cc56" serviceID="1" action="web"
+     actionData="" a_actionData="" i_actionData="" brief="[QQ小程序]We成信大" flag="0">
+    <item layout="2">
+        <picture cover="http://pubminishare-30161.picsz.qpic.cn/9e52e0b2-63fa-443e-9eef-14a261642b32"/>
+        <title>We成信大</title>
+        <summary>We成信大</summary>
+    </item>
+    <source url="http://m.q.qq.com/a/s/16f055a6ae96ccac6c3ca0606bf1cc56"
+            icon="https://miniapp.gtimg.cn/public/appicon/6dca4792d15ed27ac7dd436051b46209_200.jpg" name="We成信大"
+            appid="0" action="web" actionData="" a_actionData="tencent0://" i_actionData=""/>
+</msg>
