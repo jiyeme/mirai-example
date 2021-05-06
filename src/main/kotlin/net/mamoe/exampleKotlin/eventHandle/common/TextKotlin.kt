@@ -2,6 +2,7 @@ package net.mamoe.exampleKotlin.eventHandle.common
 
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.event.subscribeGroupMessages
+import net.mamoe.mirai.event.subscribeMessages
 
 /**
  * @Author jiyec
@@ -24,7 +25,7 @@ object TextKotlin {
      * @param bot
      */
     private fun plainText(bot: Bot) {
-        bot.eventChannel.subscribeGroupMessages{
+        bot.eventChannel.subscribeMessages{
             case("kotlin纯文本"){
                 subject.sendMessage("纯文本消息-Kotlin")
             }

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<msg serviceID="107" templateID="1" action="viewReceiptMessage" brief="[回执消息]"
+     m_resid="UUAq5xccO44DIuoF23YLkxMk04EBBbGxESP6o45SqHb2KiUOmUpPUHoBkBSUwKcL" m_fileName="6862690782327914927"
+     sourceMsgId="0" url="" flag="3" adverSign="0" multiMsgFlag="0">
+    <item layout="29" advertiser_id="0" aid="0">
+        <type>1</type>
+    </item>
+    <source name="" icon="" action="" appid="-1"/>
+</msg>

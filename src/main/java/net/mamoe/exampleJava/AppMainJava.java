@@ -4,6 +4,7 @@ import net.mamoe.exampleJava.eventHandle.MainHandleJava;
 import net.mamoe.exampleKotlin.eventHandle.MainHandleKotlin;
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.BotFactory;
+import net.mamoe.mirai.event.events.MessageEvent;
 import net.mamoe.mirai.utils.BotConfiguration;
 
 /**
@@ -54,7 +55,14 @@ public class AppMainJava
     }
 
     private static void afterLogin(Bot bot){
+        bot.getEventChannel().subscribeAlways(MessageEvent.class, event->{
+           if(event.getMessage().toString().contains("test")){
+               event.getSubject().sendMessage("这是一条测试消息");
+           }
+        });
+        // 调JAVA的实现
         MainHandleJava.main(bot);
+        // 调kotlin的实现
         MainHandleKotlin.main(bot);
     }
 

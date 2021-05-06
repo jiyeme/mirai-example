@@ -6,6 +6,7 @@ import net.mamoe.exampleKotlin.eventHandle.MainHandleKotlin
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.BotFactory
 import net.mamoe.mirai.event.subscribeGroupMessages
+import net.mamoe.mirai.event.subscribeMessages
 
 /**
  * @Author jiyec
@@ -45,12 +46,14 @@ object AppMainKotlin {
 
     @JvmStatic
     private fun afterLogin(bot: Bot): Unit {
-        bot.eventChannel.subscribeGroupMessages {
+        bot.eventChannel.subscribeMessages {
             case("test"){
                 subject.sendMessage("群员发送了一个测试消息")
             }
         }
+        // 调kotlin的实现
         MainHandleKotlin.main(bot)
+        // 调JAVA的实现
         MainHandleJava.main(bot)
     }
 

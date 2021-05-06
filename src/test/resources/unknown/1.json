@@ -1,0 +1,37 @@
+{
+  "app": "com.tencent.gamecenter.wzryRedpack",
+  "desc": "",
+  "view": "indexView",
+  "ver": "1.0.0.1",
+  "prompt": "[王者荣耀]点卷红包",
+  "appID": "",
+  "sourceName": "",
+  "actionData": "",
+  "actionData_A": "",
+  "sourceUrl": "",
+  "meta": {
+    "shareData": {
+      "appid": "1104466820",
+      "bgUrl": "http://imgcache.gtimg.cn/ark_msg/202001101435_1dianquan.png?ts=1578638150326",
+      "buttons": [
+        {
+          "bgUrl": "http:\/\/imgcache.gtimg.cn\/ark_msg\/202001101436_anniu.png?ts=1578638168399",
+          "jumpUrl": "https://h5.vip.qq.com/p/cgireport/cgi-bin/handle?fid=184757891&dc=10535&adId=218443&posId=157&reportKey=vab_push&classIndex=3&url=http://qm.qq.com/cgi-bin/qm/qr?k=UMpx1WeppddKcxO7ndjSTHX9xMLCI-Gi"
+        }
+      ],
+      "gamedata": "RedEnvelopeMsg_1_932630632774173750",
+      "jumpUrl": "https://h5.vip.qq.com/p/cgireport/cgi-bin/handle?fid=184757891&dc=10535&adId=218443&posId=157&reportKey=vab_push&classIndex=3&url=http://qm.qq.com/cgi-bin/qm/qr?k=UMpx1WeppddKcxO7ndjSTHX9xMLCI-Gi"
+    }
+  },
+  "config": {
+    "config": {
+      "type": "normal"
+    },
+    "ctime": 1587447079,
+    "token": "5050ace6eed03ce46e86314d846f3ed0"
+  },
+  "text": "",
+  "extraApps": [],
+  "sourceAd": "",
+  "extra": ""
+}
