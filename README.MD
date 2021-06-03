@@ -8,6 +8,8 @@ Mirai 示例项目
 
 这个项目粗略的展示了一些mirai用法的实现
 
+本项目是：https://github.com/WeCuit/WeCuit-Backen-JAVA 的关于Mirai衍生品
+
 ## 清单
 
 | 功能 | 类别|JAVA | Kotlin|
