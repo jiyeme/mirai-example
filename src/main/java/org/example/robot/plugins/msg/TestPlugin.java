@@ -1,8 +1,8 @@
-package org.example.robot.plugins;
+package org.example.robot.plugins.msg;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +13,7 @@ import java.util.Map;
  * @Version 1.0
  **/
 @Slf4j
-public class TestPlugin extends BasePluginImpl{
+public class TestPlugin extends MessagePluginImpl {
 
     private static final Map<String, Object> pluginData = new HashMap<>();
 
@@ -29,12 +29,12 @@ public class TestPlugin extends BasePluginImpl{
 
     // 本插件一级指令
     @Override
-    public String getCmd() {
+    public String getMainCmd() {
         return "测试指令";
     }
 
     @Override
-    public String getHelp() {
+    public @NotNull String getHelp() {
         return "这是测试帮助信息";
     }
 
@@ -44,29 +44,28 @@ public class TestPlugin extends BasePluginImpl{
     }
 
     @Override
-    public Map<String, String> getRegisterCmd() {
+    public Map<String, String> getRegisterAsFirstCmd() {
         return registerCmd;
     }
 
-    // 全局指令
-    @Override
-    public List<String> getGlobalCmd() {
-        return new ArrayList<String>(){{
-            add("testGlobal");
-        }};
-    }
-
     public boolean testSecond(){
-        event.getSubject().sendMessage("测试指令触发1");
-        return true;
-    }
-    public boolean testGlobal(){
-        event.getSubject().sendMessage("测试指令触发2");
+        event.getSubject().sendMessage("测试指令触发");
+        pluginData.put("test", "123");
+        updatePluginData(pluginData);
         return true;
     }
 
     // 初始化插件数据[从外部到内部]
-    public static void initPluginData(Map<String, Object> config){
+    public void initPluginData(Map<String, Object> config){
         pluginData.putAll(config);  // 置入
+    }
+
+    @Override
+    public List<String> getGlobalCmd() {
+        return null;
+    }
+
+    public void updatePluginData() {
+        super.updatePluginData(pluginData);
     }
 }

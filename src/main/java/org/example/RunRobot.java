@@ -1,12 +1,9 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.example.robot.RobotMain;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * @Author jiyec
@@ -27,11 +24,6 @@ public class RunRobot {
             log.error("账号为空");
             return;
         }
-
-        // Mybatis初始化
-        // InputStream config = TestRobot.class.getResource("/mybatis/mybatis-config.xml").openStream();
-        // SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
-        // MyBatis.setSqlSessionFactory(sqlSessionFactory);
 
         long id = Long.parseLong(qqid);
         if(id != 0L && pass != null)

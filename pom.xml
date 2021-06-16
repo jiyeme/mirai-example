@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <kotlin.version>1.4.32</kotlin.version>
+    <kotlin.version>1.5.10</kotlin.version>
   </properties>
 
 
@@ -64,26 +64,6 @@
     <!--</dependency>-->
 
     <!--机器人END-->
-
-    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.24</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>3.5.7</version>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
-    <dependency>
-      <groupId>org.quartz-scheduler</groupId>
-      <artifactId>quartz</artifactId>
-      <version>2.3.2</version>
-    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
     <dependency>

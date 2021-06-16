@@ -1,8 +1,10 @@
-package org.example.robot.plugins;
+package org.example.robot.plugins.msg;
 
 import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Map;
  * @Date 2021/5/19 10:48
  * @Version 1.0
  **/
-public class AdminPlugin extends BasePluginImpl{
+public class AdminPlugin extends MessagePluginImpl {
 
     private static final Map<String, Object> pluginData = new HashMap<>();
 
@@ -22,20 +24,26 @@ public class AdminPlugin extends BasePluginImpl{
     }};
     // 需要注册为一级指令的 指令
     @Getter
-    private final Map<String, String> registerCmd = new HashMap<String, String>(){{
+    private final Map<String, String> registerAsFirstCmd = new HashMap<String, String>(){{
 
     }};
 
     // 本插件一级指令
     @Override
-    public String getCmd() {
+    public String getMainCmd() {
         return "管理系统";
     }
 
     @Override
-    public String getHelp() {
+    public @NotNull String getHelp() {
         return "这是测试帮助信息";
     }
+
+    @Override
+    public List<String> getGlobalCmd() {
+        return null;
+    }
+
 
     public boolean testSecond(){
         event.getSubject().sendMessage("测试指令触发");
@@ -51,7 +59,5 @@ public class AdminPlugin extends BasePluginImpl{
 
     // 初始化插件数据[从外部到内部]
     public static void setPluginData(Map<String, Object> config){
-        pluginData.clear();         // 清空
-        pluginData.putAll(config);  // 置入
     }
 }

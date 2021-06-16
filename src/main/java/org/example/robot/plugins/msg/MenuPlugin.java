@@ -1,7 +1,8 @@
-package org.example.robot.plugins;
+package org.example.robot.plugins.msg;
 
-import lombok.Getter;
 import org.example.robot.MainHandleJava;
+import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.HashMap;
@@ -15,15 +16,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Date 2021/5/19 10:48
  * @Version 1.0
  **/
-public class MenuPlugin extends BasePluginImpl{
+public class MenuPlugin extends MessagePluginImpl {
 
     private static final List<String> pluginList;
     private static final StringBuilder menuStr = new StringBuilder();
 
     static{
         pluginList = new LinkedList<String>(){{
-            String plugins = MainHandleJava.class.getResource("plugins").getPath();
-            String[] list = new File(plugins).list((dir, name) -> !name.contains("$") && !name.contains("Base") && name.endsWith("Plugin.class"));
+            String plugins = MainHandleJava.class.getResource("plugins/msg").getPath();
+            String[] list = new File(plugins).list((dir, name) -> !name.contains("$") && !name.contains("Message") && name.endsWith("Plugin.class"));
 
             for (String s : list) {
                 add(s.substring(0, s.indexOf("Plugin")));
@@ -34,20 +35,20 @@ public class MenuPlugin extends BasePluginImpl{
         menuStr.append("详细说明在下面列表名称中加第二参数“？”，中间记得加空格哟~(>_<。)比如：「菜单系统 ?」\n--------------\n");
         pluginList.forEach(p->{
             try {
-                Class<? extends BasePluginImpl> clazz = (Class<? extends BasePluginImpl>) Class.forName("org.example.robot.plugins." + p + "Plugin");
+                Class<? extends MessagePluginImpl> clazz = (Class<? extends MessagePluginImpl>) Class.forName(MenuPlugin.class.getPackage().getName() + "." + p + "Plugin");
 
                 // 获取 INSTANCE
                 // Field instance = clazz.getField("INSTANCE");
 
                 // 获取 Plugin对象
                 // BasePlugin plugin = (BasePlugin)instance.get(p);
-                BasePlugin plugin = clazz.newInstance();
+                MessagePlugin plugin = clazz.newInstance();
 
                 // 增加  [指令 ---> 对象] 关联
                 if(i.getAndIncrement() % 2 == 0)
-                    menuStr.append("--" + plugin.getCmd() + "--");
+                    menuStr.append("--" + plugin.getMainCmd() + "--");
                 else
-                    menuStr.append("||--" + plugin.getCmd() + "--\n");
+                    menuStr.append("||--" + plugin.getMainCmd() + "--\n");
 
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
@@ -66,19 +67,24 @@ public class MenuPlugin extends BasePluginImpl{
     }};
     // 需要注册为一级指令的 指令
     @Getter
-    private final Map<String, String> registerCmd = new HashMap<String, String>(){{
+    private final Map<String, String> registerAsFirstCmd = new HashMap<String, String>(){{
         put("菜单", "getMenu");
     }};
 
     // 本插件一级指令
     @Override
-    public String getCmd() {
+    public String getMainCmd() {
         return "菜单系统";
     }
 
     @Override
-    public String getHelp() {
+    public @NotNull String getHelp() {
         return "菜单提列举了当前系统所具备的功能";
+    }
+
+    @Override
+    public List<String> getGlobalCmd() {
+        return null;
     }
 
     public boolean getMenu(){

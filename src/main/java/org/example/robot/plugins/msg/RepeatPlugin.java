@@ -1,7 +1,8 @@
-package org.example.robot.plugins;
+package org.example.robot.plugins.msg;
 
 import lombok.Getter;
 import org.example.robot.eventHandle.RepeatEventJava;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.Map;
  * @Date 2021/5/19 10:48
  * @Version 1.0
  **/
-public class RepeatPlugin extends BasePluginImpl{
+public class RepeatPlugin extends MessagePluginImpl {
 
     private static final List<Long> repeatList = new ArrayList<>();
 
@@ -25,19 +26,24 @@ public class RepeatPlugin extends BasePluginImpl{
 
     // 需要注册为一级指令的 指令
     @Getter
-    private final Map<String, String> registerCmd = new HashMap<String, String>(){{
+    private final Map<String, String> registerAsFirstCmd = new HashMap<String, String>(){{
 
     }};
 
     // 本插件一级指令
     @Override
-    public String getCmd() {
-        return "复读功能";
+    public String getMainCmd() {
+        return "复读系统";
     }
 
     @Override
-    public String getHelp() {
-        return "User:\n发送 [复读功能 开启] 可进入复读模式";
+    public @NotNull String getHelp() {
+        return "User:\n开启 - 进入复读模式\nstop - 退出复读";
+    }
+
+    @Override
+    public List<String> getGlobalCmd() {
+        return null;
     }
 
     public boolean enableMode(){
